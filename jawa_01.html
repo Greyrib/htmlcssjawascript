@@ -18,7 +18,8 @@
         var fullDate = new Date (Date.now());
 
         //var theDay = fullDate.getDay(0).toString();
-        var theDay = fullDate.toLocaleDateString('dk-DK', {weekday: "long"});
+        var theDay = fullDate.toLocaleDateString("dk-DK", {weekday: "long"});
+        //const theDay = new Date (Date.now()).toLocaleDateString ('dk-DK')
 
         var hours = fullDate.getHours();
         if (fullDate.getHours() < 10)
@@ -30,15 +31,6 @@
         seconds = fullDate.getSeconds() < 10 ? "0" + seconds : seconds;
 
         var ampm = fullDate.getHours > 12 ? "AM" : "PM";
-
-        // Remnant
-        let formattedDate = new Date(fullDate).toLocaleDateString(undefined, {
-            weekday: 'long',   // Full weekday name
-            year: 'numeric',   // Full year
-            month: 'long',     // Full month name
-            day: 'numeric'     // Day of the month
-        });
-
 
         let finalString = "Today is : " + theDay + " .<br>" +
         hours + " " + ampm + " : " + minutes + " : " + seconds; //formattedDate;

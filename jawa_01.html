@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="UpdateableParagraph">Text Paragraph for Date!</p>
+    <br>
+    <button onClick="dateTime()">Click me to get the Time!</button>
+</body>
+</html>
+
+
+<script>
+    function dateTime () {
+        var fullDate = new Date (Date.now());
+
+        //var theDay = fullDate.getDay(0).toString();
+        var theDay = fullDate.toLocaleDateString('dk-DK', {weekday: "long"});
+
+        var hours = fullDate.getHours();
+        if (fullDate.getHours() < 10)
+            hours = "0" + hours;
+
+        var minutes = fullDate.getMinutes();
+        minutes = fullDate.getMinutes () < 10 ? "0" + minutes : minutes;
+        var seconds = fullDate.getSeconds();
+        seconds = fullDate.getSeconds() < 10 ? "0" + seconds : seconds;
+
+        var ampm = fullDate.getHours > 12 ? "AM" : "PM";
+
+        // Remnant
+        let formattedDate = new Date(fullDate).toLocaleDateString(undefined, {
+            weekday: 'long',   // Full weekday name
+            year: 'numeric',   // Full year
+            month: 'long',     // Full month name
+            day: 'numeric'     // Day of the month
+        });
+
+
+        let finalString = "Today is : " + theDay + " .<br>" +
+        hours + " " + ampm + " : " + minutes + " : " + seconds; //formattedDate;
+
+        // Today is : Tuesday.
+        // Current time is : 10 PM : 30 : 38
+
+        document.getElementById("UpdateableParagraph").innerHTML = finalString;
+    }
+</script>
